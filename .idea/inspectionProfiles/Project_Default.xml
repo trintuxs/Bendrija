@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Annotator" enabled="true" level="ERROR" enabled_by_default="true">
+      <option name="runVisitors" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="irankiai.irankis" />
+          <option value="administracija.models.Vadovybe.objects" />
+          <option value="django.views.islaidos" />
+          <option value="django.views.balsavimas" />
+          <option value="django.views.diskusija" />
+          <option value="django.contrib.sites.admin.site.urls" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
