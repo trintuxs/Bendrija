@@ -5,6 +5,7 @@ from administracija import views
 
 
 urlpatterns = [
-    path('', views.buto_inasai, name='buto_inasai'),
+    path('', views.kaupiamasis_inasas, name='kaupiamasis_inasas'),
+
     path('admin/', admin.site.urls),
 ] 

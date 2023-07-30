@@ -1,15 +1,38 @@
-from django.db.models import Sum
+from datetime import date
+
 from django.shortcuts import render
+
+from administracija import models
+from administracija.models import Kaupiamsis_Inasas, Islaidos
 from gyventojas.models import Butas
 
 # Create your views here.
-def buto_inasai(request):
-    flat_money = Butas.objects.annotate(inasu_suma=Sum('kaupiamsis_inasas__amount'))
-    all_flats = Butas.objects.aggregate(visu_buto_suma=Sum('kaupiamsis_inasas__amount'))
-    
+def kaupiamasis_inasas(request):
+    # Calculate the total amount for each owner (butas)
+    owners = Butas.objects.all()
+    for owner in owners:
+        kaupiamasis_inasas = Kaupiamsis_Inasas.objects.filter(owner=owner)
+        total_amount = sum(inasas.amount for inasas in kaupiamasis_inasas)
+        owner.total_amount = total_amount if total_amount else 0
+
+    # Calculate the total amount for all owners combined
+    all_kaupiamasis_inasas = Kaupiamsis_Inasas.objects.all()
+    total_sum = sum(inasas.amount for inasas in all_kaupiamasis_inasas)
+
+    # Get the expenses for the current month
+    current_month = date.today().month
+    current_month_expenses = Islaidos.objects.filter(date__month=current_month)
+
+    total_current_month_expenses = sum(expense.repairs_cost for expense in current_month_expenses)
+
+    # Calculate the remaining total after subtracting the current month expenses
+    remaining_total = total_sum - total_current_month_expenses
+
     context = {
-        'flat_money': flat_money,
-        'all_flats': all_flats,
-       
+        'owners': owners,
+        'total_sum': total_sum if total_sum else 0,
+        'current_month_expenses': current_month_expenses,
+        'total_current_month_expenses': total_current_month_expenses,
+        'remaining_total': remaining_total,
     }
-    return render(request, 'buto_inasai.html', context=context)
+    return render(request, 'kaupiamasis_inasas.html', context)

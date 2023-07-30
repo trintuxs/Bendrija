@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+    <h1>Kaupiamasis Inasas</h1>
+    <h2>Bendra suma visiems butams: {{ total_sum }}</h2>
+    <ul>
+        {% for owner in owners %}
+        <li>
+            <strong>Butas: {{ owner }}</strong>
+            <br>
+            Kaupiamasis inasas: {{ owner.total_amount }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Šio mėnesio išlaidos:</h2>
+    <ul>
+        {% for expense in current_month_expenses %}
+        <li>{{ expense.discription }} - {{ expense.repairs_cost }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Visų butų likutis po šio mėnesio išlaidų: {{ remaining_total }}</h2>
+    <h2>Šio mėnesio išlaidų suma: {{ total_current_month_expenses }}</h2>
+{% endblock %}

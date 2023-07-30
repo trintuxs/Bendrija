@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+  <h1>Gyventojai</h1>
+  <p>Mūsų namo bendrijos nariai.</p>
+  {% for a in gyventojas %}
+    <li>{{a.first_name}} {{a.last_name}}</li>
+    {% endfor %}
+{% endblock %}

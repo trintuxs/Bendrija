@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+  <h1>Butai</h1>
+  <p>Mūsų bendrijos butu sąrašas.</p>
+  {% for a in butas %}
+    <li> Buto numeris:{{a.flat_nr}},  buto dydis kv:{{a.size_kv}}</li>
+    {% endfor %}
+{% endblock %}

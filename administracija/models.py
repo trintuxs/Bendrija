@@ -1,5 +1,6 @@
 from django.db import models
 from gyventojas.models import Butas
+from datetime import date
 # Create your models here.
 class Kaupiamsis_Inasas(models.Model):
     owner = models.ForeignKey(Butas, on_delete=models.CASCADE)
@@ -17,7 +18,7 @@ class Kaupiamsis_Inasas(models.Model):
 class Islaidos(models.Model):
     discription = models.TextField(verbose_name=("Lėšų panaudojimas:"))
     repairs_cost = models.FloatField(verbose_name=("Išleista suma:"))
-
+    date = models.DateField(default=date.today)
     def __str__(self):
         return self.discription
 
