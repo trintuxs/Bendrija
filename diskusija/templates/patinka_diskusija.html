@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ diskusija.pavadinimas }}</h2>
+  <p>{{ diskusija.turinys }}</p>
+  <p>Patiko: {{ diskusija.patikejai.count() }}</p>
+  <button onclick="window.location.href='{% url 'patinka_diskusija' diskusijos_id=diskusija.id %}'">
+    {% if gyventojas in diskusija.patikejai.all %}
+      Patinka
+    {% else %}
+      Nepatinka
+    {% endif %}
+  </button>
+
+  <h3>Komentarai:</h3>
+  {% for komentaras in komentarai %}
+    <p>{{ komentaras.gyventojas.first_name }} {{ komentaras.gyventojas.last_name }}:</p>
+    <p>{{ komentaras.turinys }}</p>
+  {% endfor %}
+
+  <a href="{% url 'prideti_komentara' diskusijos_id=diskusija.id %}">Pridėti komentarą</a>
+{% endblock %}

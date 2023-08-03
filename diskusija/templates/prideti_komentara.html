@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Pridėti komentarą</h2>
+  <form method="post">
+    {% csrf_token %}
+    <textarea name="turinys" cols="30" rows="4" required></textarea><br>
+    <input type="submit" value="Siųsti">
+  </form>
+  <a href="{% url 'diskusija_perziureti' diskusijos_id=diskusija.id %}">Grįžti atgal</a>
+{% endblock %}
