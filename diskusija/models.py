@@ -13,6 +13,10 @@ class Diskusija(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Diskusija'
+        verbose_name_plural = 'Diskusijos'
+
 class Komentaras(models.Model):
     diskusija = models.ForeignKey('Diskusija', on_delete=models.CASCADE)
     gyventojas = models.ForeignKey(Gyventojas, on_delete=models.CASCADE)
@@ -21,3 +25,7 @@ class Komentaras(models.Model):
 
     def __str__(self):
         return f"{self.gyventojas.first_name} {self.gyventojas.last_name}: {self.turinys}"
+
+    class Meta:
+        verbose_name = 'Komentaras'
+        verbose_name_plural = 'Komentarai'

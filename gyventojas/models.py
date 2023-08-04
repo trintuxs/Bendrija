@@ -13,7 +13,7 @@ class Gyventojas(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} {self.flat_nr}"
 
     class Meta:
         verbose_name = 'Gyventojas'
@@ -23,6 +23,7 @@ class Gyventojas(models.Model):
 class Butas(models.Model):
     flat_nr = models.IntegerField(verbose_name="Buto numeris")
     size_kv = models.IntegerField(verbose_name="Buto plotas kv")
+    owner = models.ForeignKey(Gyventojas, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return f"{self.flat_nr} {self.size_kv}"

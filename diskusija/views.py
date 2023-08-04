@@ -8,7 +8,7 @@ def diskusija_perziureti(request, diskusijos_id):
     diskusija = get_object_or_404(Diskusija, id=diskusijos_id)
     komentarai = Komentaras.objects.filter(diskusija=diskusija)
     context = {'diskusija': diskusija, 'komentarai': komentarai}
-    return render(request, 'diskusija_perziureti.html', context)
+    return render(request, 'diskusija_perziureti.html', context = context)
 
 @login_required
 def prideti_komentara(request, diskusijos_id):

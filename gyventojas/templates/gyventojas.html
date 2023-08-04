@@ -1,9 +1,20 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyventojai</title>
+</head>
+<body>
+    <h1>Gyventojai</h1>
+    <p>Mūsų namo bendrijos nariai.</p>
+    <ul>
+        {% for a in gyventojas %}
 
-{% block "content" %}
-  <h1>Gyventojai</h1>
-  <p>Mūsų namo bendrijos nariai.</p>
-  {% for a in gyventojas %}
-    <li>{{a.first_name}} {{a.last_name}}</li>
-    {% endfor %}
-{% endblock %}
+
+
+            <li>{{ a.first_name }} {{ a.last_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
