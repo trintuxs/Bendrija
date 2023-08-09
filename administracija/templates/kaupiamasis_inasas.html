@@ -25,8 +25,17 @@
         {% for expense in current_month_expenses %}
         <li>{{ expense.discription }} - {{ expense.repairs_cost }}</li>
         {% endfor %}
+
     </ul>
 
     <h2>Visų butų likutis po šio mėnesio išlaidų: {{ remaining_total }}</h2>
     <h2>Šio mėnesio išlaidų suma: {{ total_current_month_expenses }}</h2>
+
+ {% for detail in payment_details %}
+    <li>{{ detail.owner.duties }} - {{ detail.owner.wage }} USD
+        {% if not detail.owner.moketojas %}
+            <a href="{% url 'darbuotojai:apmoketi' detail.owner.id %}">Mokėti</a>
+        {% endif %}
+    </li>
+        {% endfor %}
 {% endblock %}

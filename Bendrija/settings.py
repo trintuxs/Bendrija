@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'gyventojas',
     'administracija',
     'diskusija',
+    'darbuotojai',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',

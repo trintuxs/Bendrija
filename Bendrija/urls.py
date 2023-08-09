@@ -19,10 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
-from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('darbuotojai/', include('darbuotojai.urls')),
     path('gyventojas/', include('gyventojas.urls')),
     path('administracija/', include('administracija.urls')),
     path('diskusija/', include('diskusija.urls')),
