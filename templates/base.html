@@ -9,12 +9,14 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% if not user.is_authenticated %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'register'%}">Registruotis</a></li>
+
 
 
 {% endif %}
 </head>
 <body>
+<li class="nav-item"><a class="nav-link" href="{% url 'register'%}">Registruotis</a></li>
+
 {% if messages %}
     {% for message in messages %}
         <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'info' %}success{% endif %}" role="alert">
@@ -40,8 +42,8 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Pradžia</a></li>
-          <li><a href="">Visi gyventojai</a></li>
-          <li><a href="">Visi butai</a></li>
+          <li><a href="{% url 'gyventojas %}">Visi gyventojai</a></li>
+          <li><a href="{% url 'butas' %}">Visi butai</a></li>
 
         </ul>
      {% endblock %}

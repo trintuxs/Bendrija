@@ -12,7 +12,7 @@ class Kaupiamsis_Inasas(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Kaupiamasis Inasas: {self.owner} - {self.size_kv} m² "
+        return f"Kaupiamasis Inasas: {self.owner} - {self.owner.size_kv} m² "
 
     #Apskaiciuojamas visų kaupiamųjų įnašų sumą pagal savininką
     @classmethod

@@ -1,8 +1,10 @@
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.decorators.csrf import csrf_protect
+
 
 from gyventojas.models import Gyventojas, Butas
 
@@ -63,3 +65,6 @@ def register(request):
             messages.error(request, 'Slaptažodžiai nesutampa!')
             return redirect('register')
     return render(request, 'register.html')
+
+
+

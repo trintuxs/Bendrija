@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+  <h1>Gyventoju sarasas</h1>
+  {% if gyventoju_sarasas %}
+  <ul>
+    {% for gyventojas in gyventoju_sarasas %}
+      <li>
+        <a href="{{ gyventojas.id }}">{{ gyventojas.first_name }}</a> ({{gyventojas.last_name}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+
+  {% endif %}
+{% endblock %}

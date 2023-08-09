@@ -1,10 +1,10 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import SET_NULL
+
 
 
 # Create your models here.
-
 
 
 class Gyventojas(models.Model):
@@ -13,11 +13,13 @@ class Gyventojas(models.Model):
     last_name = models.CharField(max_length=50, verbose_name="Pavardė")
     email = models.CharField(max_length=50, verbose_name="Elektroninis paštas")
     flat_nr = models.ForeignKey('Butas', on_delete=models.SET_NULL, null=True, blank=True, related_name='savininkas')
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.flat_nr}"
+
 
     class Meta:
         verbose_name = 'Gyventojas'

@@ -1,5 +1,5 @@
 
-from django.contrib import admin
+
 from django.urls import path
 
 from gyventojas import views
@@ -10,5 +10,4 @@ urlpatterns = [
     path('gyventojas/', views.gyventojai, name='gyventojas'),
     path('gyventojas/', views.GyventojasListView.as_view(), name='gyventojas'),
     path('register/', views.register, name='register'),
-
-]
+    ]
