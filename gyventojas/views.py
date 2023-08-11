@@ -1,18 +1,17 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.decorators.csrf import csrf_protect
 
 
-from gyventojas.models import Gyventojas, Butas
+from gyventojas.models import Resident, Flat
 
 
 # Create your views here.
 def index(request):
-    rezident = Gyventojas.objects.count()
-    flats = Butas.objects.count()
+    rezident = Resident.objects.count()
+    flats = Flat.objects.count()
     context = {
         'rezident': rezident,
         'flats': flats
@@ -20,21 +19,21 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-def gyventojai(request):
-    gyventojas = Gyventojas.objects.all()
-    return render(request, 'gyventojas.html', {'gyventojas': gyventojas})
+def residents(request):
+    residents = Resident.objects.all()
+    return render(request, 'gyventojas.html', {'gyventojas': residents})
 
 
-class GyventojasListView(generic.ListView):
-    model = Gyventojas
+class ResidentListView(generic.ListView):
+    model = Resident
     template_name = 'gyventoju_sarasas.html'
 
-def butas(request):
-    butas = Butas.objects.all()
+def flat(request):
+    flat = Flat.objects.all()
     context = {
-        'butas': butas
+        'butas': flat
     }
-    print(butas)
+    print(flat)
     return render(request, 'butas.html', context)
 
 @csrf_protect

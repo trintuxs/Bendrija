@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from administracija.models import Kaupiamsis_Inasas, Islaidos
-from gyventojas.models import Butas
+from administracija.models import Kaupiamsis_Inasas, Expenses
+from gyventojas.models import Flat
 
 
 #Visu butu savininkai
 def kaupiamasis_inasas(request):
-    owners = Butas.objects.all()
+    owners = Flat.objects.all()
     payment_details = []
 
     for owner in owners:
@@ -23,7 +23,7 @@ def kaupiamasis_inasas(request):
     total_sum = Kaupiamsis_Inasas.calculate_total_sum()
 
     # Skaiciuojama šio mėnesio išlaidų suma (jei tai susiję su kitu kodu)
-    total_current_month_expenses = Islaidos.calculate_total_current_month_expenses()
+    total_current_month_expenses = Expenses.calculate_total_current_month_expenses()
 
     # Likutis po šio mėnesio išlaidų
     remaining_total = total_sum - total_current_month_expenses

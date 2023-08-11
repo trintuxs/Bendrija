@@ -1,19 +1,30 @@
 from django.contrib import admin
-from gyventojas.models import Gyventojas, Butas
+from django.contrib.auth.admin import UserAdmin
+
+from gyventojas.forms import CustomUserCreationForm, CustomUserChangeForm
+from gyventojas.models import Resident, Flat
 
 
-class GyventojasAdmin(admin.ModelAdmin):
+class ResidentAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'flat_nr')
 
 
-class ButasAdmin(admin.ModelAdmin):
+class FlatAdmin(admin.ModelAdmin):
     list_display = ('flat_nr', 'size_kv')
 
 
 
 
 
+class CustomUserAdmin(UserAdmin):
+     add_form = CustomUserCreationForm
+     form = CustomUserChangeForm
+     model = Resident
+     list_display = [ "first_name", "last_name", "email", "flat_nr" ]
+
+
+
 # Register your models here.
-admin.site.register(Gyventojas, GyventojasAdmin)
-admin.site.register(Butas, ButasAdmin)
+admin.site.register(Resident, ResidentAdmin),
+admin.site.register(Flat, FlatAdmin)
 

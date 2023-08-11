@@ -1,11 +1,11 @@
 
 from django.db import models
 
-from gyventojas.models import Gyventojas
+from gyventojas.models import Resident
 
 
 class Diskusija(models.Model):
-    gyventojas = models.ForeignKey(Gyventojas, on_delete=models.CASCADE)
+    gyventojas = models.ForeignKey(Resident, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, verbose_name="Pavadinimas")
     text = models.TextField(verbose_name="Turinys")
     date = models.DateTimeField(auto_now_add=True)
@@ -19,7 +19,7 @@ class Diskusija(models.Model):
 
 class Komentaras(models.Model):
     diskusija = models.ForeignKey('Diskusija', on_delete=models.CASCADE)
-    gyventojas = models.ForeignKey(Gyventojas, on_delete=models.CASCADE)
+    gyventojas = models.ForeignKey(Resident, on_delete=models.CASCADE)
     turinys = models.TextField(verbose_name="Turinys")
     data = models.DateTimeField(auto_now_add=True)
 

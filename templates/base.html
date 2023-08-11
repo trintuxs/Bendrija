@@ -31,7 +31,7 @@
               </svg>
             {{ user.get_username }}</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Mano butas</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next=/library">Atsijungti</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next=">Atsijungti</a></li>
           {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Registruotis</a></li>
@@ -42,8 +42,11 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Pradžia</a></li>
-          <li><a href="{% url 'gyventojas %}">Visi gyventojai</a></li>
+          <li><a href="{% url 'gyventojas' %}">Visi gyventojai</a></li>
           <li><a href="{% url 'butas' %}">Visi butai</a></li>
+            <li><a href="{% url 'kaupiamasis_inasas' %}">Kaupiamojo inaso ataskaita</a></li>
+
+            <li><a href="{% url 'darbuotojai_list' %}">Darbuotojai</a></li>
 
         </ul>
      {% endblock %}

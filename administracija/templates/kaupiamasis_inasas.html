@@ -6,14 +6,14 @@
     <ul>
         {% for detail in payment_details %}
     <p>
-        Savininkas: {{ detail.owner.name }}<br>
-        Suma apmokėjimui: {{ detail.payment_amount }}
-        <a href="mailto:{{ detail.owner.email }}?subject=Mokėjimas%20už%20kaupiamąjį%20įnašą&body=Sveiki,%0D%0A%0D%0APrašome%20apmokėti%20suma%20{{ detail.payment_amount }}%20už%20kaupiamąjį%20įnašą.%0D%0A%0D%0APagarbiai,">Siųsti pranešimą</a>
-    </p>
+    Savininkas: {{ detail.owner.name }}<br>
+    Suma apmokėjimui: {{ detail.payment_amount }}
+    <a href="mailto:{{ detail.owner.email }}?subject=Mokėjimas%20už%20kaupiamąjį%20įnašą&body=Sveiki,%0D%0A%0D%0APrašome%20apmokėti%20suma%20{{ detail.payment_amount }}%20už%20kaupiamąjį%20įnašą.%0D%0A%0D%0APagarbiai,">Siųsti pranešimą</a>
+</p>
 {% endfor %}
         {% for owner in owners %}
         <li>
-            <strong>Butas: {{ owner }}</strong>
+            <strong>Flat: {{ owner }}</strong>
             <br>
             Kaupiamasis inasas: {{ owner.total_amount }}
         </li>
@@ -31,11 +31,6 @@
     <h2>Visų butų likutis po šio mėnesio išlaidų: {{ remaining_total }}</h2>
     <h2>Šio mėnesio išlaidų suma: {{ total_current_month_expenses }}</h2>
 
- {% for detail in payment_details %}
-    <li>{{ detail.owner.duties }} - {{ detail.owner.wage }} USD
-        {% if not detail.owner.moketojas %}
-            <a href="{% url 'darbuotojai:apmoketi' detail.owner.id %}">Mokėti</a>
-        {% endif %}
-    </li>
-        {% endfor %}
+
+
 {% endblock %}

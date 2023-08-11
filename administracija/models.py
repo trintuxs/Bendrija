@@ -2,11 +2,11 @@ from django.core.mail import send_mail
 from django.db import models
 from django.db.models import Sum
 
-from gyventojas.models import Butas
+from gyventojas.models import Flat
 from datetime import date
 # Create your models here.
 class Kaupiamsis_Inasas(models.Model):
-    owner = models.ForeignKey(Butas, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Flat, on_delete=models.CASCADE)
     amount = models.FloatField(verbose_name="Inaso suma")
     date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -47,7 +47,7 @@ class Kaupiamsis_Inasas(models.Model):
 
 
 
-class Islaidos(models.Model):
+class Expenses(models.Model):
     discription = models.TextField(verbose_name=("Lėšų panaudojimas:"))
     repairs_cost = models.FloatField(verbose_name=("Išleista suma:"))
     date = models.DateField(default=date.today)
@@ -63,6 +63,4 @@ class Islaidos(models.Model):
             'repairs_cost__sum']
         return total_current_month_expenses if total_current_month_expenses else 0
 
-    class Meta:
-        verbose_name = 'Išlaidos'
-        verbose_name_plural = 'Išlaidos'
+
