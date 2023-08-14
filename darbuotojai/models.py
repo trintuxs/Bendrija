@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Sum
+
 
 # Create your models here.
 class Staff(models.Model):
@@ -13,12 +15,4 @@ class Staff(models.Model):
 
 
 
-#darbo uzmokestis pagal pareigas
-    def save(self, *args, **kwargs):
-        if self.duties == 'Komendantas':
-            self.wage = 100
-        elif self.duties == 'Buhaltere':
-            self.wage = 50
-        elif self.duties == 'Valytoja':
-            self.wage = 25
-        super(Staff, self).save(*args, **kwargs)
+

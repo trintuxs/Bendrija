@@ -1,5 +1,4 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
 from gyventojas.models import Resident
 
 

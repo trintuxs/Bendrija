@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Darbuotojų sąrašas ir užmokestis</title>
+</head>
+<body>
+    <h1>Darbuotojų sąrašas ir užmokestis</h1>
+    <ul>
+        {% for darbuotojas in staff %}
+            <li>{{ darbuotojas.duties }} - {{ darbuotojas.wage }}</li>
+        {% endfor %}
+    </ul>
+    <p>Visų darbuotojų užmokestis yra: {{ total_wage }}</p>
+</body>
+</html>
