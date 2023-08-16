@@ -2,17 +2,14 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
+
 # Create your models here.
 
 
 class Resident(AbstractUser):
-    first_name = models.CharField(max_length=50, verbose_name="Vardas")
-    last_name = models.CharField(max_length=50, verbose_name="Pavardė")
-    email = models.CharField(max_length=50, verbose_name="Elektroninis paštas")
-    flat_nr = models.ForeignKey('Flat', on_delete=models.SET_NULL, null=True, blank=True, related_name='savininkas')
+    flat_nr = models.ForeignKey('Flat', on_delete=models.SET_NULL, null=True, blank=True, related_name='butas')
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.flat_nr} {self.email}"

@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
 from gyventojas.forms import CustomUserCreationForm, CustomUserChangeForm
 from gyventojas.models import Resident, Flat
 
@@ -8,7 +7,6 @@ from gyventojas.models import Resident, Flat
 class ResidentAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'flat_nr')
 '''
-
 
 
 class FlatAdmin(admin.ModelAdmin):
@@ -24,7 +22,6 @@ class CustomUserAdmin(UserAdmin):
 
 # Register your models here.
 admin.site.register(Resident, CustomUserAdmin)
-
 admin.site.register(Flat, FlatAdmin)
 
-#admin.site.register(ResidentAdmin)
+# admin.site.register(ResidentAdmin)

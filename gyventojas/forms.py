@@ -10,6 +10,6 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = Resident
-        fields = ('username', 'email')  # Naudojame 'username' ir 'email'
+        fields = ('username', 'email', 'flat_nr')  # Naudojame 'username' ir 'email'
 
     
