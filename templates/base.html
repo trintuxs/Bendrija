@@ -20,8 +20,7 @@
           {{ user.get_username }}
         </a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="#">Mano butas</a></li>
-      <li class="nav-item">
+      <li>
         <a class="nav-link" href="{% url 'logout'%}?next=">Atsijungti</a>
       </li>
     {% else %}
@@ -37,15 +36,17 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        {% block sidebar %}
-          <ul class="sidebar-nav">
-            <li><a href="{% url 'index' %}">Pradžia</a></li>
-            <li><a href="{% url 'gyventojas' %}">Visi gyventojai</a></li>
-            <li><a href="{% url 'butas' %}">Visi butai</a></li>
-            <li><a href="{% url 'kaupiamasis_inasas' %}">Kaupiamojo inaso ataskaita</a></li>
-            <li><a href="{% url 'staff_list' %}">Darbuotojai</a></li>
-          </ul>
-        {% endblock %}
+        {% if user.is_authenticated %}
+          {% block sidebar %}
+            <ul class="sidebar-nav">
+              <li><a href="{% url 'index' %}">Pradžia</a></li>
+              <li><a href="{% url 'gyventojas' %}">Visi gyventojai</a></li>
+              <li><a href="{% url 'butas' %}">Visi butai</a></li>
+              <li><a href="{% url 'kaupiamasis_inasas' %}">Kaupiamojo inaso ataskaita</a></li>
+              <li><a href="{% url 'staff_list' %}">Darbuotojai</a></li>
+            </ul>
+          {% endblock %}
+        {% endif %}
       </div>
       <div class="col-sm-10">
         {% block content %}{% endblock %}
